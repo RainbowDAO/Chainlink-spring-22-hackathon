@@ -9,8 +9,9 @@ contract Governor {
     bytes32 public constant DOMAIN_TYPEHASH = keccak256("EIP712Domain(string name,uint256 chainId,address verifyingContract)");
     bytes32 public constant BALLOT_TYPEHASH = keccak256("Ballot(uint256 proposalId,bool support)");
     string public constant name = "Compound Governor Alpha";
-    constructor(address _govToken) {
+    constructor(address _govToken,address _oracle) {
         govToken = IToken(_govToken);
+        oracle = _oracle;
     }
 
     struct Proposal {
